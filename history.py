@@ -18,6 +18,9 @@ def load_seen_urls(path: str = "seen_urls.pkl") -> set:
     try:
         with open(path, "rb") as f:
             seen = pickle.load(f)
+        if not isinstance(seen, set):
+            print(f"[이력] {path} 파일 형식이 올바르지 않습니다 → 빈 이력으로 초기화합니다.")
+            return set()
         print(f"[이력] {len(seen)}개의 기존 URL을 로드했습니다.")
         return seen
     except pickle.UnpicklingError:

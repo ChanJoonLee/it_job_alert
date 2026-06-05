@@ -1,0 +1,21 @@
+Verification date: 2026-06-05
+
+Commands executed:
+
+1. python -m py_compile main.py crawler.py history.py notifier.py config.py test_core.py
+Result: passed
+
+2. python -m unittest -v test_core.py
+Result: passed
+
+Test summary:
+- URL encoding and page parameter generation passed.
+- HTML job-list parsing with missing optional fields passed.
+- Missing history file handling passed.
+- History save/load roundtrip passed.
+- Invalid history file type handling passed.
+
+Notes:
+- jobs_result.xlsx is included as a sample execution output file.
+- Email credentials are intentionally not hard-coded. Set JOB_ALERT_EMAIL_ID,
+  JOB_ALERT_EMAIL_PW, and JOB_ALERT_RECEIVER_EMAIL before running email delivery.

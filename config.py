@@ -1,9 +1,16 @@
 # ─────────────────────────────────────────────
-# 이메일 계정 설정 (실제 값으로 교체 후 사용)
+import os
+
+# 이메일 계정 설정
+# 제출본에는 비밀번호를 직접 넣지 않고, 실행할 PC의 환경변수에서 읽도록 구성한다.
+# PowerShell 예시:
+#   $env:JOB_ALERT_EMAIL_ID="your_email@naver.com"
+#   $env:JOB_ALERT_EMAIL_PW="앱_비밀번호"
+#   $env:JOB_ALERT_RECEIVER_EMAIL="receiver@email.com"
 # ─────────────────────────────────────────────
-EMAIL_ID       = "your_naver_id@naver.com"   # 발신 계정
-EMAIL_PW       = "your_app_password"          # 앱 비밀번호 (2단계 인증 설정 후 발급)
-RECEIVER_EMAIL = "receiver@example.com"       # 수신자 이메일
+EMAIL_ID       = os.getenv("JOB_ALERT_EMAIL_ID", "your_email@naver.com")
+EMAIL_PW       = os.getenv("JOB_ALERT_EMAIL_PW", "app_password")
+RECEIVER_EMAIL = os.getenv("JOB_ALERT_RECEIVER_EMAIL", EMAIL_ID)
 
 # ─────────────────────────────────────────────
 # SMTP 서버 설정 — "naver" 또는 "gmail" 선택
