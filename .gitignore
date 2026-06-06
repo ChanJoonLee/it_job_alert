@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+
+jobs_result.xlsx
+seen_urls.pkl
+_test_seen_urls.pkl
+execution_result.txt

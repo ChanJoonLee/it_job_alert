@@ -2,13 +2,8 @@
 crawler.py — 사람인(saramin.co.kr) IT 채용공고 수집 모듈
 """
 
-import sys
-import io
 import time
 
-# Windows 콘솔 한글 깨짐 방지
-if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 import random
 import requests
 from bs4 import BeautifulSoup
@@ -141,15 +136,3 @@ def fetch_jobs(keyword: str, max_pages: int = 3) -> list[dict]:
 
     print(f"[수집] '{keyword}' 키워드 총 {len(all_jobs)}건 수집 완료")
     return all_jobs
-
-
-# ─────────────────────────────────────────────
-# 단독 테스트 실행용
-# ─────────────────────────────────────────────
-if __name__ == "__main__":
-    results = fetch_jobs("python", max_pages=1)
-    print(f"\n── 수집 결과 ({len(results)}건) ──")
-    for i, job in enumerate(results, 1):
-        print(f"{i:3}. [{job['company']}] {job['title']}")
-        print(f"      마감: {job['deadline']} | 지역: {job['location']}")
-        print(f"      URL : {job['url']}")
